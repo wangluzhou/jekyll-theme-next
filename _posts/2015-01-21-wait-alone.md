@@ -30,4 +30,3 @@ toc: false
 等候到麻木
 等候到无法再哭
 <img src="http://middlesummer.qiniudn.com/20150121-wait-alone/wait-alone.jpg" class="img-center" />
-
