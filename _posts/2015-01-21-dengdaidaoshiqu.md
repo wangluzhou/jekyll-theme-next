@@ -1,12 +1,12 @@
-title: 等待到失去	
+---
+title: wait-alone
 date: 2015-01-21 01:20:21
 categories:
-- Life
+- 随笔
 tags:
 - 我所谓的诗
-toc: false
 ---
-<img src="http://middlesummer.qiniudn.com/20150121-wait-alone/wait-alone.jpg" class="img-topic" />
+
 在孤山上踌躇
 等候与一朵花的奇遇
 她的摇曳
@@ -15,7 +15,10 @@ toc: false
 是清澈明亮的湖
 我伫立在这山间的小路
 等待相逢到来的脚步
+
 <!-- more -->
+
+<img src="http://middlesummer.qiniudn.com/20150121-wait-alone/wait-alone.jpg" class="img-topic" />
 在孤山上踌躇
 错过了与一朵花的邂逅
 我忘却了时间的残酷

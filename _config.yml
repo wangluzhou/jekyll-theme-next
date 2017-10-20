@@ -4,9 +4,9 @@
 # ---------------------------------------------------------------
 
 # Site
-title: WangLuzhou
-subtitle:
-description:
+title: 跃啊跃啊跃
+subtitle: 珍惜每一天
+description: 呵呵哒
 author: Wang Luzhou
 # Support language: de, en, fr-FR, id, ja, ko, pt-BR, pt, ru, zh-Hans, zh-hk, zh-tw
 language: en
@@ -15,6 +15,7 @@ date_format: '%Y-%m-%d'
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com' and baseurl as '/child'
 url: http://wangluzhou.github.io
+repository: wangluzhou/wangluzhou.github.io.git
 baseurl:
 permalink: pretty
 
@@ -117,8 +118,8 @@ index_with_subtitle: false
 # When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash (/archives -> archives)
 menu:
   home: /
-  #categories: /categories/
-  #about: /about/
+  categories: /categories/
+  about: /about/
   archives: /archives/
   tags: /tags/
   #sitemap: /sitemap.xml
