@@ -1,4 +1,4 @@
-title: 等待到失去	
+title: 等待到失去
 date: 2015-01-21 01:20:21
 categories:
 - Life
@@ -6,7 +6,7 @@ tags:
 - 我所谓的诗
 toc: false
 ---
-<img src="http://middlesummer.qiniudn.com/20150121-wait-alone/wait-alone.jpg" class="img-topic" />
+<img>
 在孤山上踌躇
 等候与一朵花的奇遇
 她的摇曳
