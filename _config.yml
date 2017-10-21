@@ -206,7 +206,7 @@ font:
 
 # 打赏功能
 reward_comment: 打赏还是要有的，万一有人打赏呢！
-wechatpay: /assets/dashang/wechat-reward-image
+wechatpay: /assets/dashang/wechat.jpg
 alipay: /assets/dashang/alipay.jpg
 
 
