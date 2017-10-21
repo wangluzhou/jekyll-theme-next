@@ -89,7 +89,7 @@ keywords: "Jekyll, NexT"
 rss:
 
 # Specify the date when the site was setup
-#since: 2015
+since: 2015
 
 # icon between year and author @Footer
 authoricon: heart
@@ -286,11 +286,14 @@ sidebar:
 
 
 # Blog rolls
-#links_title: Links
+links_title: Links
 #links_layout: block
 #links_layout: inline
-#links:
-  #Title: http://example.com/
+links:
+  阳志平网志: http://www.yangzhiping.com/
+  PyCon: http://www.pycon.org/
+  github: https://github.com/
+
 
 
 # ---------------------------------------------------------------
@@ -604,7 +607,7 @@ pace_theme: pace-theme-minimal
 canvas_nest: false
 
 # three_waves
-three_waves: false
+three_waves: true
 
 # canvas_lines
 canvas_lines: false
