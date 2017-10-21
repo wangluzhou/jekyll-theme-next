@@ -205,9 +205,9 @@ font:
     size:
 
 # 打赏功能
-reward_comment: 坚持原创技术分享，您的支持将鼓励我继续创作！
-wechatpay: /path/to/wechat-reward-image
-alipay: /path/to/alipay-reward-image
+reward_comment: 打赏还是要有的，万一有人打赏呢！
+wechatpay: /assets/dashang/wechat-reward-image
+alipay: /assets/dashang/alipay.jpg
 
 
 # ---------------------------------------------------------------
