@@ -5,14 +5,15 @@ categories:
 - 计算机
 tags:
 - C++
-toc: true
 ---
 <img src="http://7bv8rz.com1.z0.glb.clouddn.com/20150121-qualifier-const-in-cpp/const.png" class="img-topic" />
 I think the usage of const is complex. I spent a lot of time in it(Someone may think it is unnecessary) but I am still not sure of everything. Something in the notes may be wrong. If you find something wrong, please point it out.
 # General usage of const
+
 ```C++
 const int bufSize = 512;
 ```
+
 bufSize is a constant so that any attemp to assign to bufSize ia an error.
 To avoid multiple definitions of the same variable, const variables are defined as local to the file.
 We must initialize the const value in its declaration.
@@ -21,6 +22,7 @@ We must initialize the const value in its declaration.
 Of course, they are different!
 ("Reference to Const" and "Const Reference" are the same!)
 Different declaration
+
 ```C++
 	int *const p;//We can not change the value the pointer itself.
 	const int *const p;//We can not change the value of the underlying object through p
@@ -34,6 +36,7 @@ By the way, we can change the value of underlying object by const pointer.
 Pay attention that
 Until now, only reference to const can be initilized form any expression that can be converted to the type of the reference.
 For example:
+
 ```C++
 	const int &ri1 = 42;
 	const int &ri2 = i * 2;
