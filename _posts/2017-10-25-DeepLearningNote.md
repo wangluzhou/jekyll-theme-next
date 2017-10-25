@@ -1,10 +1,10 @@
 ---
-title: 打草稿
-date: 2017-08-05 23:42:21
+title: 深度学习
+date: 2017-10-25 23:42:21
 categories:
-- 随笔
+- 技术
 tags:
-- 我所谓的诗
+- 深度学习
 ---
 
 # Ch0： Docker和TensorFlow环境
