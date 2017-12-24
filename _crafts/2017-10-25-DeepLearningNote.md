@@ -166,3 +166,9 @@ $$ {}+1=1 $$
 snowNLP是一个Python写的类库，可以方便地处理中文文本内容，一个方便用于处理中文的类库，并且没有NLTK（自然语言处理包），所有的算法都是自己实现的，并且自带了一些训练好了的字典。本程序都是处理unicode编码的，需要自行decode和unicode。
 
 推荐英文论文:Speech and Language Processing - ch6 - naive bayes and sentiment classification
+
+
+
+
+
+
