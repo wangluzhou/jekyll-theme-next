@@ -7,8 +7,8 @@ tags:
 - 深度学习
 ---
 
-# Ch0： Docker和TensorFlow环境
-> 本期任务：
+# Docker和TensorFlow环境
+
 ## 1. Docker学习
 ## 2 环境配置
 ### 2.1 Docker安装
