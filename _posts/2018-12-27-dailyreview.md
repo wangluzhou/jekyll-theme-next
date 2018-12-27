@@ -1,4 +1,5 @@
 ---
+layout: post
 title: 181228 Daily Review
 date: 2018-12-28 10:00:00
 categories:
