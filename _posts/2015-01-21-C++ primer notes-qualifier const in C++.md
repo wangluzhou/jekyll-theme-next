@@ -2,7 +2,7 @@
 title: C++ primer notes-qualifier const in C++
 date: 2015-01-21 20:25:37
 categories:
-- 计算机
+- 技术
 tags:
 - C++
 ---
