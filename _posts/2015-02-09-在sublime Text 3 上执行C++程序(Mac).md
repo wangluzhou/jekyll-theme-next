@@ -15,6 +15,7 @@ Sublime是一款非常不错的代码编辑器，对于我而言，sublime最大
 其实我对makefile并不是十分了解，只是用其去执行过几个小程序罢了，不过对于目前的我来说也足够用了。要使用sublime执行makefile，直接添加一个building tool就可以了。
 到~/Library/Application Support/Sublime Text 3/Packages/User/目录下建立makefile.sublime-build文件。并在里面写入：
 
+
 ```
 	{
 		"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
