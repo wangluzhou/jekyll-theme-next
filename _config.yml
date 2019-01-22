@@ -121,6 +121,7 @@ index_with_subtitle: false
 menu:
   home: /
   categories: /categories/
+  booklist: /booklist/
   about: /about/
   archives: /archives/
   tags: /tags/
