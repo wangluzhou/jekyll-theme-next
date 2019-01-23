@@ -142,6 +142,7 @@ menu_icons:
   home: home
   about: user
   booklist: book
+  docs: bookmark
   categories: th
   schedule: calendar
   tags: tags

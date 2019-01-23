@@ -3,8 +3,6 @@ title:
   category: 分类
   tag: 标签
   schedule: 日程表
-  docs: 文档
-  booklist: 书单
 
 
 author: 博主
@@ -15,6 +13,7 @@ menu:
   categories: 分类
   tags: 标签
   booklist: 书单
+  docs: 文档
   about: 关于
   search: 搜索
   schedule: 日程表
