@@ -123,7 +123,7 @@ menu:
   categories: /categories/
   booklist: /booklist/
   about: /about/
-  documents: /documents/
+  docs: /docs/
   archives: /archives/
   tags: /tags/
   #sitemap: /sitemap.xml
@@ -142,7 +142,6 @@ menu_icons:
   home: home
   about: user
   booklist: book
-  documents: ddddd
   categories: th
   schedule: calendar
   tags: tags
