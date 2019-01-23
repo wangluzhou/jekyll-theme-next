@@ -6,7 +6,7 @@ date: 2019-01-30 15:12:42
 ---
 
 
-# [pyfi document]()
+# [pyfi document](http://wangluzhou.com/%E6%8A%80%E6%9C%AF/2018/08/10/pyfi_helper_document/)
 - project name: python fixed income helper(pyfi for short)
 - author: 大船
 - version: 0.1.20
