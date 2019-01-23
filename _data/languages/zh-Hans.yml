@@ -24,6 +24,7 @@ sidebar:
   toc: 文章目录
 
 post:
+  booklist: 书单
   created: 创建于
   modified: 更新于
   sticky: 置顶
