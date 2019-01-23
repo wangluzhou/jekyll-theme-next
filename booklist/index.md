@@ -1,18 +1,11 @@
 ---
 title: 书单
 layout: post
+layout: page
 date: 2019-01-30 15:12:42
 
 ---
 
----
-title: C++的继承机制图解
-date: 2015-06-08 15:12:42
-categories:
-- 技术
-tags:
-- C++
----
 
 # 格式
 完成框+书名+完成度+备注+笔记链接
