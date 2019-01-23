@@ -273,7 +273,6 @@ sidebar:
   #  - hide    expand only when click on the sidebar toggle icon.
   #  - remove  Totally remove sidebar including sidebar toggle.
   display: post
-  display: booklist
   display: always
   #display: hide
   #display: remove
@@ -294,7 +293,6 @@ links_title: 其他链接
 #links_layout: block
 #links_layout: inline
 links:
-  阳志平网志: http://www.yangzhiping.com/
   PyCon: http://www.pycon.org/
   github: https://github.com/
 
