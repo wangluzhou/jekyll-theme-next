@@ -6,7 +6,7 @@ categories:
 tags:
 - C++
 ---
-<img src="http://7bv8rz.com1.z0.glb.clouddn.com/20150121-qualifier-const-in-cpp/const.png" class="img-topic" />
+<img src="/pictures/const.png" style="display:block;margin:auto"/>
 I think the usage of const is complex. I spent a lot of time in it(Someone may think it is unnecessary) but I am still not sure of everything. Something in the notes may be wrong. If you find something wrong, please point it out.
 # General usage of const
 
