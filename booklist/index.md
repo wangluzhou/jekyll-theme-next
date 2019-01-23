@@ -1,7 +1,8 @@
 ---
 title: 书单
-layout: page
+layout: post
 date: 2019-01-30 15:12:42
+
 ---
 
 # 格式
