@@ -295,7 +295,9 @@ links_title: 其他链接
 #links_layout: block
 #links_layout: inline
 links:
-  PyCon: http://www.pycon.org/
+  julia: https://julialang.org/
+  tushare: https://tushare.pro/
+  uci python libs: https://www.lfd.uci.edu/~gohlke/pythonlibs/
   github: https://github.com/
 
 
