@@ -104,7 +104,7 @@ Map中的包含的信息：
 - `ytm`: 十年国债收益率月度数据
 - `report`: 回测统计报告(建议调用pyfi.common.dprint函数打印report)
 example：
-```
+```Python
 from pyfi import monthly_backtest
 
 from pyfi import WindHelper as w
@@ -113,6 +113,8 @@ cpi = w.edb(codes=["cpi"], begin_date="2002-01-01", end_date="2019-01-01")
 
 cpi = cpi.iloc[:,0].apply(lambda x: 1 if x <2 else -1) # cpi的0阶逻辑
 rlt = monthly_backtest(cpi)
+from pyfi import dprint
+dprint(rlt.report)
 ```
 
 # 常用画图功能
