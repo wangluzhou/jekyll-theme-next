@@ -47,10 +47,66 @@ pip install pyfi_helper
 pip install --upgrade pyfi_helper
 ```
 
-# 调用wind数据
+# Wind接口封装
+pyfi中定义了WindHelper类，用于封装wind的python api函数
+## mapper表
+mapper表旨在用新的名称替代wind代码，方便提取。
+
+```python
+   mapper = Map({
+    "ip_yoy": "M0000545",
+    "ip_cyoy": "M0000011",
+    "cpi": "M0000612",
+    "cpif": "M0000616",
+    "cpinf": "M0000613",
+    "cpicore": "M0085932",
+    "ppi": "M0001227",
+    "cgpi": "M0001375",  # "企业商品交易价格指数"
+    "USDNH即期汇率": "M0290205",
+    "gz1y": "M1001646",
+    "gz2y": "S0059745",
+    "gz3y": "M1001648",
+    "gz4y": "M0057946",
+    "gz5y": "M1001650",
+    "gz6y": "M0057947",
+    "gz7y": "S0059748",
+    "gz8y": "M1000165",
+    "gz9y": "M1004678",
+    "gz10y": "S0059749",
+    "gz20y": "S0059751",
+    "gz30y": "S0059752",
+    "gk10y": "M1004271",
+    "gk7y": "M1004269",
+    "gk5y": "M1004267",
+    "gk3y": "M1004265",
+    "gk1y": "M1004687",
+    "gc007": "204007.SH",
+    "gc001": "204001.SH",
+    "gc014": "204014.SH",
+    "gc028": "204028.SH",
+    "gc091": "204091.SH",
+    "r007": "M1001795",
+    "1yfr007": "M0048486",
+    "5yfr007": "M0048490",
+    "M2": "M0001385",
+    "水泥价格指数": "S5914515",
+    "CRB": "S0031505",
+    "gz10yind": "CBA04501.CS",
+    "玻璃综合指数": "S5907372",
+    "螺纹钢": "S5707798",
+    "fai_cyoy": "M0000273",
+    "brent": "S0260035",  # 布伦特原油活跃期货合约结算价
+})
+```
+整个mapper表用我们Map对象存储，支持据点索引。
+
+```python
+In[20]: mapper.水泥价格指数
+Out[20]: 'S5914515'
+```
 
 ## edb函数
-pyfi的edb函数主要对wind进行了封装，并命名了一些常用的变量，方便提取。
+WindHelper包含edb函数，主要对wind的edb函数进行了封装。
 
 ```python
 WindHelper.edb(codes, 
@@ -78,7 +134,7 @@ WindHelper.edb(codes,
 ```python
 from pyfi import WindHelper as w
 cpi = w.edb(codes=["cpi"], begin_date="2002-01-01", end_date="2019-01-01")
-
+cpi.head()
 ```
 
 # 回测功能
@@ -127,6 +183,13 @@ dprint(rlt.report)
 <img src="/pictures/pyfi_helper_document_backtest.PNG" style="display:block;margin:auto"/>
 
 
+# 指标生成集(待补充)
+
+# 各类函数功能(待补充)
+## 农历模块
+## 收益率曲线boostrap模块
+## 宏观序列处理模块
+
 # 常用画图功能
 
 pyfi提供必要的画图功能帮助大家快速查看时间序列的形态和比较。
@@ -152,7 +215,7 @@ line_graph([gz10y])
 <img src="/pictures/pyfi_helper_document_line_graph.PNG" style="display:block;margin:auto"/>
 
 
-## 双坐标double_line换图函数:
+## 双坐标double_line换图函数
 
 ```python
  double_lines(series1,
@@ -182,22 +245,66 @@ double_lines(gz10y, cpi)
 ## 单元逻辑函数
 基于宏观量化方法论体系，我们初步提供了一些基础的0阶，1阶，2阶函数。
 所有逻辑函数的输入为series，输出也是series
-### zo1(data, args)
+### `zo1(data, args=[3])`
 zero_order1,极值逻辑
 > 判断当前观测点是否处于极值位置
 
 输入参数：
-- 
-### zo2():
-zero_order2,标准化
-### fo1()
-first_order1: 边际强度
-### fo2()
-first_order2: 趋势持续度
-### fo3()
-first_order3: 均线缺口
-### fo4()
-second_order1: 边际强度变化的强度
+- data：宏观序列
+- args：参数组，单一参数，默认3，表示当前观测值是否为最近三个月的机制
+
+返回：
+- 最高点返回1，最低点返回0
+
+### `zo2(data, args=(36, 0))`
+> zero_order2,标准化，并指定最低阈值，在正负阈值区间内为0
+
+输入参数：
+- data：宏观序列
+- args：参数组，单一参数，args[0]默认36，表示观测区间，args[1]默认0，表示生效阈值 
+
+返回：
+- 布尔序列：最高点返回1，最低点返回0
+
+### `fo1(data, args=[6])`
+> first_order1:边际强度，表示序列在指定区间内的边际强度
+
+输入参数：
+- data：宏观序列
+- args：参数组，单一参数，默认6，表示观测区间
+
+返回：
+- 离散序列，范围在[-args[0], args[0]]
+
+### `fo2(data, args=[5])`
+> first_order2: 趋势持续度，表示序列在区间内的持续度
+
+输入参数：
+- data：宏观序列
+- args：参数组，单一参数，默认5，表示序列观测区间
+
+返回：
+- - 离散序列，范围在[-args[0], args[0]]
+
+### `fo3(data, args=[1, 12])`
+> first_order3: 均线缺口
+
+输入参数：
+- data：宏观序列
+- args：参数组，双参数，args[0]为短均线，args[1]为长均线
+
+返回：
+- 连续序列
+
+### `so1(data, args=[5, 1])`
+>second_order1: 边际强度变化的强度
+
+输入参数：
+- data：宏观序列
+- args：参数组，单参数，args[0]表示观测区间，相当于fo1的一阶
+
+返回：
+- 离散序列，范围为[-args[0]+1, args[0]-1]
 
 
 # changelog
