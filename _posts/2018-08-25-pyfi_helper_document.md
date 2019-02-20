@@ -15,7 +15,7 @@ pyfi设计原则是基于宏观量化方法论体系，即将逻辑分为要素�
 - 本次更新重构了pyfi架构。
 - 修改了部分单元逻辑函数。
 
-# pyfi结构：
+# pyfi结构
 pyfi的结构如下图所示：
 
 ```
@@ -66,9 +66,9 @@ WindHelper.edb(codes,
 - begin_date； 开始时间， str或者datetime类型
 - end_date：结束时间，str或者datetime类型
 - options：默认"fill=perious"
-- adjust：默认False 
-- shift：默认0 
-- fill：默认False
+- adjust：默认False,True则将月度数据对应的月末时间调整到最近的前一个交易日
+- shift：默认0， 正数表示数据向后迁移的单位数，负数为向前
+- fill：默认False，True则前一个月数据填充空缺数据
 
 返回dataframe
 
@@ -124,6 +124,9 @@ from pyfi import dprint
 dprint(rlt.report)
 ```
 
+<img src="/pictures/pyfi_helper_document_backtest.PNG" style="display:block;margin:auto"/>
+
+
 # 常用画图功能
 
 pyfi提供必要的画图功能帮助大家快速查看时间序列的形态和比较。
@@ -146,6 +149,9 @@ gz10y = w.edb(codes=["gz10y"], begin_date="2002-01-01", end_date="2019-01-01").i
 line_graph([gz10y])
 ```
 
+<img src="/pictures/pyfi_helper_document_line_graph.PNG" style="display:block;margin:auto"/>
+
+
 ## 双坐标double_line换图函数:
 
 ```python
@@ -160,6 +166,7 @@ line_graph([gz10y])
              ax=None):
 ```
 
+
 案例：
 
 ```python
@@ -169,16 +176,28 @@ cpi = w.edb(codes=["cpi"], begin_date="2002-01-01", end_date="2019-01-01").iloc[
 double_lines(gz10y, cpi)
 ```
 
+<img src="/pictures/pyfi_helper_document_double_lines.PNG" style="display:block;margin:auto"/>
+
 # 逻辑函数
 ## 单元逻辑函数
 基于宏观量化方法论体系，我们初步提供了一些基础的0阶，1阶，2阶函数。
 所有逻辑函数的输入为series，输出也是series
-- zero_order1: 极值逻辑
-- zero_order2: 标准化
-- first_order1: 边际强度
-- first_order2: 趋势持续度
-- first_order3:均线缺口
-- second_order1: 边际强度变化的强度
+### zo1(data, args)
+zero_order1,极值逻辑
+> 判断当前观测点是否处于极值位置
+
+输入参数：
+- 
+### zo2():
+zero_order2,标准化
+### fo1()
+first_order1: 边际强度
+### fo2()
+first_order2: 趋势持续度
+### fo3()
+first_order3: 均线缺口
+### fo4()
+second_order1: 边际强度变化的强度
 
 
 # changelog
