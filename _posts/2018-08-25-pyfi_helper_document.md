@@ -114,12 +114,10 @@ Map中的包含的信息：
 案例：
 
 ```python
+
 from pyfi import monthly_backtest
-
 from pyfi import WindHelper as w
-
 cpi = w.edb(codes=["cpi"], begin_date="2002-01-01", end_date="2019-01-01")
-
 cpi = cpi.iloc[:,0].apply(lambda x: 1 if x <2 else -1) # cpi的0阶逻辑
 rlt = monthly_backtest(cpi)
 from pyfi import dprint
@@ -161,6 +159,7 @@ line_graph([gz10y])
              fig=None,
              ax=None):
 ```
+
 案例：
 
 ```python
