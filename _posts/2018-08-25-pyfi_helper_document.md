@@ -44,9 +44,12 @@ pip install --upgrade pyfi_helper
 ```
 
 # Wind接口封装
-pyfi中定义了WindHelper类，用于封装wind的python api函数
+
+> pyfi中定义了WindHelper类，用于封装wind的python api函数
+
 ## mapper表
-mapper表旨在用新的名称替代wind代码，方便提取。
+
+> mapper表旨在用新的名称替代wind代码，方便提取。
 
 ```python
    mapper = Map({
@@ -114,6 +117,7 @@ WindHelper.edb(codes,
 			   fill=False)
 ```
 输入参数说明：
+
 - codes: 代码的列表
 - begin_date； 开始时间， str或者datetime类型
 - end_date：结束时间，str或者datetime类型
@@ -144,7 +148,8 @@ monthly_backtest(score,
 				 weight_bounds=[-1, 1],
 				 bk_code=FIXEDINCOME)
 ```
-输入参数:
+**输入参数:**
+
 - score:打分序列，回测函数默认基于打分机制，且打分必须符合中心为0，左右对称。
 默认正分为看多，负分为看空。
 - `pattern`: 数字表示打分的最大值
@@ -152,9 +157,11 @@ monthly_backtest(score,
 - `weight_bounds`: 给仓位设定区间
 - `bk_code`: 默认`FIXEDINCOME`，即7-10年国债指数，可以自己添加指定基准的wind代码
 
-返回结果：
-回测函数返回一个自定义Map类型，可以直接通过句点索引返回信息中的各个数据，并且支持中文索引。
+**返回结果：**
+> 回测函数返回一个自定义Map类型，可以直接通过句点索引返回信息中的各个数据，并且支持中文索引。
+
 Map中的包含的信息：
+
 - `score`:输入的打分
 - `port`: 组合的净值曲线
 - `pos`: 仓位
@@ -171,7 +178,7 @@ Map中的包含的信息：
 from pyfi import monthly_backtest
 from pyfi import WindHelper as w
 cpi = w.edb(codes=["cpi"], begin_date="2002-01-01", end_date="2019-01-01")
-cpi = cpi.iloc[:,0].apply(lambda x: 1 if x <2 else -1) # cpi的0阶逻辑
+cpi = cpi.iloc[:,0].apply(lambda x: 1 if x <2.5 else -1) # cpi的0阶逻辑
 rlt = monthly_backtest(cpi)
 from pyfi import dprint
 dprint(rlt.report)
