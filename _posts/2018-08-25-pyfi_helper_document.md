@@ -207,7 +207,7 @@ Map中的包含的信息：
 - `alpha`: 超额alpha
 - `ytm`: 十年国债收益率月度数据
 - `report`: 回测统计报告(建议调用pyfi.common.dprint函数打印report)
-案例：
+案例：基于对CPI高点低点预测的有效性分析
 
 ```python
 
