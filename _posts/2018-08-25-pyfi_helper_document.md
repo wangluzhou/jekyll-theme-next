@@ -215,7 +215,7 @@ from pyfi import monthly_backtest_with_repo
 from pyfi import WindHelper as w
 from pyfi import logic
 cpi = w.edb(codes=["cpi"], begin_date="2002-01-01", end_date="2019-01-01")
-cpi = -logic.zo1(cpi.shift(1).iloc[:,0], args=[6])
+cpi = -logic.zo1(cpi.iloc[:,0], args=[6])
  # cpi的0阶逻辑(zo1),6个月的高点做空，6个月的低点做多
 rlt = monthly_backtest_with_repo(cpi)
 from pyfi import dprint
@@ -223,6 +223,25 @@ dprint(rlt.report)
 ```
 
 <img src="/pictures/pyfi_helper_document_backtest_with_repo.PNG" style="display:block;margin:auto"/>
+
+```
+-  最大回撤:0.1658583853682296
+-  夏普比率:0.735677258760662
+-  超额夏普比率:0.03532301244161473
+-  年化收益率:0.058541120038705596
+-  基准年化收益率:0.03886420945842484
+-  年均alpha:0.01967691058028076
+-  alpha最大回撤:0.09773265095965566
+-  信息比率:0.12626187165277092
+-  calmar指标:0.3548018407116408
+-  看多次数:43.0
+-  看多准确率:0.7674418604651163
+-  看空次数:66.0
+-  看空准确率:0.5606060606060606
+-  综合准确率:0.6422018348623854
+
+```
+
 
 # 指标生成集(待补充)
 
