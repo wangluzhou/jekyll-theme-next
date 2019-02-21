@@ -150,7 +150,7 @@ monthly_backtest(score,
 - `pattern`: 数字表示打分的最大值
 - `title`: 给回测图设定标题
 - `weight_bounds`: 给仓位设定区间
-- `bk_code`: 默认`FIXEDINCOME`，即7-10年国债指数，可以自己添加对应记住的wind代码
+- `bk_code`: 默认`FIXEDINCOME`，即7-10年国债指数，可以自己添加指定基准的wind代码
 
 返回结果：
 回测函数返回一个自定义Map类型，可以直接通过句点索引返回信息中的各个数据，并且支持中文索引。
@@ -158,7 +158,7 @@ Map中的包含的信息：
 - `score`:输入的打分
 - `port`: 组合的净值曲线
 - `pos`: 仓位
-- `benchmark`: 基准
+- `benchmark`: 基准的净值曲线
 - `alpha`: 超额alpha
 - `d_alpha`： 超额alpha的一阶变化
 - `ytm`: 十年国债收益率月度数据
@@ -178,6 +178,51 @@ dprint(rlt.report)
 
 <img src="/pictures/pyfi_helper_document_backtest.PNG" style="display:block;margin:auto"/>
 
+## 财富指数回测（含回购收益）
+
+```python
+monthly_backtest_with_repo(
+                 score, 
+                 pattern=1, 
+                 title="Monthly backtest with net value index", 
+                 weight_bounds=[-1, 1],
+                 bk_code=FIXEDINCOME)
+```
+
+输入参数:
+- score:打分序列，回测函数默认基于打分机制，且打分必须符合中心为0，左右对称。
+默认正分为看多，负分为看空。
+- `pattern`: 数字表示打分的最大值
+- `title`: 给回测图设定标题
+- `init_weight`: 设定仓位基准区间，系统默认最低配置为0，最高配置为2倍的int_weight
+- `bk_code`: 默认`FIXEDINCOME`，即7-10年国债指数，可以自己添加指定基准的wind代码
+
+返回结果：
+回测函数返回一个自定义Map类型，可以直接通过句点索引返回信息中的各个数据，并且支持中文索引。
+Map中的包含的信息：
+- `score`:输入的打分
+- `port`: 组合的净值曲线
+- `pos`: 仓位
+- `benchmark`: 基准的净值曲线
+- `alpha`: 超额alpha
+- `ytm`: 十年国债收益率月度数据
+- `report`: 回测统计报告(建议调用pyfi.common.dprint函数打印report)
+案例：
+
+```python
+
+from pyfi import monthly_backtest_with_repo
+from pyfi import WindHelper as w
+from pyfi import logic
+cpi = w.edb(codes=["cpi"], begin_date="2002-01-01", end_date="2019-01-01")
+cpi = -logic.zo1(cpi.shift(1).iloc[:,0], args=[6])
+ # cpi的0阶逻辑(zo1),6个月的高点做空，6个月的低点做多
+rlt = monthly_backtest_with_repo(cpi)
+from pyfi import dprint
+dprint(rlt.report)
+```
+
+<img src="/pictures/pyfi_helper_document_backtest_with_repo.PNG" style="display:block;margin:auto"/>
 
 # 指标生成集(待补充)
 
@@ -188,6 +233,13 @@ dprint(rlt.report)
 ```python
 def spring_list(begin_year, end_year)
 ```
+
+输入参数：
+- begin_year:起始年
+- end_year: 结束年
+
+返回：
+- series类型，其中index为春节对应阳历日期，value（右侧）为农历日期 
 
 案例:
 
@@ -272,6 +324,16 @@ double_lines(gz10y, cpi)
 ## 单元逻辑函数
 基于宏观量化方法论体系，我们初步提供了一些基础的0阶，1阶，2阶函数。
 所有逻辑函数的输入为series，输出也是series
+使用方法：
+
+```python
+from pyfi import logic
+data_output = logic.zo1(data_input, args=[3])
+# data_input和data_output都是series
+```
+
+
+
 ### `zo1(data, args=[3])`
 zero_order1,极值逻辑
 > 判断当前观测点是否处于极值位置
@@ -281,7 +343,7 @@ zero_order1,极值逻辑
 - args：参数组，单一参数，默认3，表示当前观测值是否为最近三个月的机制
 
 返回：
-- 最高点返回1，最低点返回0
+- Series, 最高点返回1，最低点返回0
 
 ### `zo2(data, args=(36, 0))`
 > zero_order2,标准化，并指定最低阈值，在正负阈值区间内为0
@@ -335,7 +397,12 @@ zero_order1,极值逻辑
 
 
 # 版本更新
-## v0.1.17版本说明
+## v0.1.19版本说明
+- 修正了pandas的future warning，增加register_matplotlib_converters用于处理datetimeindex数据
+- 增加monthly_backtests_with_repo回测函数，并增加bk_code
+- 修正zo1单元逻辑函数，高点为1，低点为-1，其他为0
+
+## v0.1.18版本说明
 - 增加农历春节功能
 
 ## v0.1.16版本说明
