@@ -163,7 +163,8 @@ Map中的包含的信息：
 - `d_alpha`： 超额alpha的一阶变化
 - `ytm`: 十年国债收益率月度数据
 - `report`: 回测统计报告(建议调用pyfi.common.dprint函数打印report)
-案例：
+
+**案例：基于CPI的区间预测的有效性分析**
 
 ```python
 
@@ -207,7 +208,8 @@ Map中的包含的信息：
 - `alpha`: 超额alpha
 - `ytm`: 十年国债收益率月度数据
 - `report`: 回测统计报告(建议调用pyfi.common.dprint函数打印report)
-案例：基于对CPI高点低点预测的有效性分析
+
+**案例：基于对CPI高点低点预测的有效性分析**
 
 ```python
 
@@ -291,7 +293,7 @@ def spring_list(begin_year, end_year)
 # 常用画图功能
 
 pyfi提供必要的画图功能帮助大家快速查看时间序列的形态和比较。
-## 单坐标line_graph画图函数：
+## 单坐标line_graph画图函数
 
 ```python
 line_graph(series_list, 
@@ -343,6 +345,7 @@ double_lines(gz10y, cpi)
 ## 单元逻辑函数
 基于宏观量化方法论体系，我们初步提供了一些基础的0阶，1阶，2阶函数。
 所有逻辑函数的输入为series，输出也是series
+
 使用方法：
 
 ```python
